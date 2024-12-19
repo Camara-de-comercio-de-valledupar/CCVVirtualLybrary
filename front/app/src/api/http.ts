@@ -1,4 +1,4 @@
-const apiUrl = "http://localhost:8000";
+const apiUrl = import.meta.env.API_URL;
 
 function queryParameters(paramaters: any): string {
   return Object.keys(paramaters)
