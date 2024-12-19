@@ -1,4 +1,4 @@
-const apiUrl = import.meta.env.API_URL;
+const apiUrl = `http://${window.location.hostname}:8000`;
 
 function queryParameters(paramaters: any): string {
   return Object.keys(paramaters)
