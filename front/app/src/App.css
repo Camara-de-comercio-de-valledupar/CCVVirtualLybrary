@@ -1,95 +1,92 @@
-.nombreLibro{
+.nombreLibro {
   font-size: 14px;
   text-transform: capitalize;
   margin-top: 0;
   border-top: #0070b3 solid 2px;
-  padding: 0;
+  padding: 1rem 0rem;
 }
-.foto_libro{
+.foto_libro {
   width: 100%;
-  height:auto;
-  object-fit:cover;
+  height: 60%;
+  object-fit: cover;
   padding: 0;
   margin: 0;
 }
-.alto-barra{
+.alto-barra {
   height: 70px;
-  margin:0 20px;
+  margin: 0 20px;
 }
-.alto-50{
+.alto-50 {
   height: 30px;
-  margin:0 20px;
+  margin: 0 20px;
   font-size: 14px;
   background-color: transparent;
   border: 0 transparent solid;
-  color:#0070b3;
+  color: #0070b3;
   font-weight: bold;
   width: auto;
 }
-.fondo-azul{
+.fondo-azul {
   background-color: #0070b3;
   border-radius: 10px 10px 30px 30px;
   height: 80px;
 }
-.input-busqueda{
+.input-busqueda {
   background-color: white;
   border: 1px rgba(211, 211, 211, 0.8) solid;
   width: 50vw;
   border-radius: 30px;
   padding: 5px 50px;
   color: black;
-
 }
-.lupa{
+.lupa {
   margin-right: -40px !important;
   z-index: 2;
 }
 
-.borde-libro{
+.borde-libro {
   border: #0070b3 solid 2px;
   border-radius: 5px;
-  width: 25%;
+  width: 40%;
   padding: 0;
   margin: 2vh 2%;
 }
-.page-link{
+.page-link {
   color: #0070b3;
 }
 
-#titulo-biblioteca{
+#titulo-biblioteca {
   font-size: 32px;
 }
-.categoria{
+.categoria {
   text-transform: capitalize;
 }
-@media (min-width:1200px){
-  .borde-libro{ 
-    width: 12%;
+@media (min-width: 1200px) {
+  .borde-libro {
+    width: 20%;
   }
 }
-@media (max-width:1200px){
-  .borde-libro{ 
-    width: 24%;
+@media (max-width: 1200px) {
+  .borde-libro {
+    width: 40%;
     margin: 2vh 0.2%;
   }
 }
-@media (max-width:608px){
-  .borde-libro{ 
+@media (max-width: 608px) {
+  .borde-libro {
     width: 49%;
     margin: 2vh 0.2%;
   }
-  #logo-camara{
+  #logo-camara {
     width: 150px;
   }
-  #logo-co{
+  #logo-co {
     width: 36px;
   }
-  #logo-libros{
+  #logo-libros {
     width: 24px;
   }
-  #titulo-biblioteca{
+  #titulo-biblioteca {
     font-size: 14px;
   }
 }
-
-

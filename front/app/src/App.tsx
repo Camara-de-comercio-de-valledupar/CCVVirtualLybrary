@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Libro from "./assets/Components/Libro";
-import { DocumentModel } from "./models/document";
-import { fetchDocuments } from "./services/documentService";
 import Barra from "./assets/Components/Barra";
-import { SubcategoryResponse } from "./models/category";
 import BarraTitulo from "./assets/Components/BarraTitulo";
 import Buscador from "./assets/Components/Buscador";
+import Libro from "./assets/Components/Libro";
 import ListaNumeros from "./assets/Components/Paginacion";
+import { SubcategoryResponse } from "./models/category";
+import { DocumentModel } from "./models/document";
+import { fetchDocumentsWithCache } from "./services/documentService";
 
 function App() {
   const [paginaActual, setPaginaActual] = useState(1);
@@ -22,7 +22,7 @@ function App() {
 
   // --------------------------------------------------------------
   const getDocuments = async () => {
-    const res = await fetchDocuments({
+    const res = await fetchDocumentsWithCache({
       count: 12,
       page: paginaActual,
       query: busqueda,
@@ -38,7 +38,7 @@ function App() {
     let n = 1;
     let total: DocumentModel[] = [];
 
-    const res = await fetchDocuments({
+    const res = await fetchDocumentsWithCache({
       count: 50,
       page: n,
       query: busqueda,
@@ -49,7 +49,7 @@ function App() {
       total = total.concat(res.items);
       while (n < paginas) {
         n = n + 1;
-        const res2 = await fetchDocuments({
+        const res2 = await fetchDocumentsWithCache({
           count: 50,
           page: n,
           query: busqueda,
@@ -125,26 +125,26 @@ function App() {
       <div className="container d-flex flex-wrap justify-content-around pb-5">
         {subcategoriaSeleccionada
           ? totalDocs
-              .filter(
-                (doc: DocumentModel) =>
-                  doc.subcategory.id == subcategoriaSeleccionada.id
-              )
-              .map((e: DocumentModel, i: number) => (
-                <Libro
-                  key={i}
-                  nombre={capitalizar(e.title)}
-                  doc_url={e.pdf}
-                  image_url={e.image}
-                />
-              ))
-          : docs.map((e: DocumentModel, i: number) => (
+            .filter(
+              (doc: DocumentModel) =>
+                doc.subcategory.id == subcategoriaSeleccionada.id
+            )
+            .map((e: DocumentModel, i: number) => (
               <Libro
                 key={i}
                 nombre={capitalizar(e.title)}
                 doc_url={e.pdf}
                 image_url={e.image}
               />
-            ))}
+            ))
+          : docs.map((e: DocumentModel, i: number) => (
+            <Libro
+              key={i}
+              nombre={capitalizar(e.title)}
+              doc_url={e.pdf}
+              image_url={e.image}
+            />
+          ))}
       </div>
       <nav aria-label="Page navigation example">
         {subcategoriaSeleccionada ? (
@@ -158,7 +158,7 @@ function App() {
         )}
       </nav>
     </div>
-  ); 
+  );
 }
 
 export default App;
